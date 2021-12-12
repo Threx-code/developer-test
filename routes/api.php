@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AchievementsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('comment', [CommentController::class, 'store']);
+Route::post('create/lesson', [LessonController::class, 'store']);
+Route::post('watch/lesson', [LessonController::class, 'user_watch']);

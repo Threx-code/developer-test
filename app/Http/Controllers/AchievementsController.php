@@ -11,6 +11,7 @@ class AchievementsController extends Controller
 {
     public function index(User $user)
     {
+
         return View('index');
         // return response()->json([
         //     'unlocked_achievements' => [],
@@ -24,6 +25,6 @@ class AchievementsController extends Controller
     public function store(Request $request)
     {
 
-        event(new UserSuscribed($request->input('email')));
+        return event(new UserSuscribed($request->input('email')));
     }
 }
