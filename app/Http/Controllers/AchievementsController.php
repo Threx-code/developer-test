@@ -26,7 +26,6 @@ class AchievementsController extends Controller
         $comment_ser = $commentService->show_comment_counter_view($commentCount);
         $badge = BadgeService::badge_service($lessonCount, $commentCount);
 
-
         return response()->json([
             'unlocked_achievements' => [$lesson_ser['list'],  $comment_ser['list']],
             'next_available_achievements' => [$lesson_ser['next'],  $comment_ser['next']],
@@ -36,31 +35,3 @@ class AchievementsController extends Controller
         ]);
     }
 }
-
-
-
-
-    // {"title":
-
-    //     {"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}
-    // },
-
-    //     {"title":
-    //         {"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}
-    //     },
-    //     {"title":{"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}
-
-    // },
-    // {"title":{"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}},
-
-    // {"title":{"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}},
-
-    // {"title":{"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}},
-
-    // {"title":{"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}},
-
-    // {"title":{"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}},
-
-    // {"title":{"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}},
-
-    // {"title":{"title":"First Lessons Watched","next":"5 Lessons Watched","comment":"You are 1 point away from your next achievement of (5 Lessons Watched)"}}]
