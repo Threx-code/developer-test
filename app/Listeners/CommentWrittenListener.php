@@ -2,8 +2,10 @@
 
 namespace App\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Events\CommentWritten;
+use App\Services\CommentService;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class CommentWrittenListener
 {
@@ -23,8 +25,9 @@ class CommentWrittenListener
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(CommentWritten $event)
     {
-        //
+        $commentService = new CommentService;
+        return $commentService->comment_service($event->comment->user_id);
     }
 }

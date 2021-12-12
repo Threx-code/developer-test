@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Events\LessonWatched;
 use App\Events\CommentWritten;
-use App\Listeners\BadgetListener;
 use Illuminate\Support\Facades\Event;
 use App\Listeners\AchievementListener;
 use App\Listeners\LessonWatchedListener;

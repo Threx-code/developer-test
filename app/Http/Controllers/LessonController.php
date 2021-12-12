@@ -30,7 +30,6 @@ class LessonController extends Controller
         if ($request->validated()) {
             $user = User::where("id", $request->user_id)->get()->first();
             $lesson = Lesson::where("id", $request->lesson_id)->get()->first();
-
             return event(new LessonWatched($lesson, $user));
         }
     }

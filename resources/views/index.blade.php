@@ -13,7 +13,7 @@
                 <h1 class="text-center pb-12 text-2xl font-bold">NewsLetter</h1>
 
                 <form action="/subscribe" method="post">
-                    @csrf
+
                     <input
                     type="text"
                     name="email"

@@ -72,19 +72,37 @@ class LessonService
             case $lessonCount >= LessonEnum::fifty_watch:
                 $title = LessonEnum::watched_50;
                 $num  = "You have achieved the highest point";
-
-
                 break;
         }
 
         if ($lessonCount >= LessonEnum::fifty_watch) {
             $comment = $num;
         } else {
-            $comment = sprintf("You are %u  point away from your next achievement (%s)", $num, $next);
+            $comment = sprintf("You are %u  point away from your next achievement of (%s)", $num, $next);
         }
         return [
             'title' => $title,
-            'next' => $comment,
+            'next' => $next,
+            'comment' => $comment
+        ];
+    }
+
+    /**
+     * show_lesson_counter_view
+     *
+     * @param  mixed $lessonCount
+     * @return array
+     */
+    public function show_lesson_counter_view($lessonCount): array
+    {
+        $arr = [];
+        for ($i = 1; $i <=  $lessonCount; $i++) {
+            $arr[] = $this->lesson_counter($i)['title'];
+        }
+
+        return [
+            'list' => implode(', ', array_unique($arr)),
+            'next' => $this->lesson_counter($lessonCount)['next'],
         ];
     }
 }

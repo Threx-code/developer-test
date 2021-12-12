@@ -54,12 +54,13 @@ class BadgeService
         if ($badgeCount >= BadgeEnum::master_num) {
             $comment = $badgeValue;
         } else {
-            $comment = sprintf("You are %u  point away from your next badge (%s)", $badgeValue, $nextBadge);
+            $comment = sprintf("Your total point is %u. You are %u  point away from your next badge (%s)", $badgeCount, $badgeValue, $nextBadge);
         }
 
         return [
             'badge_name' => $badge,
-            'next_badge' => $comment,
+            'next_badge' => $nextBadge ?? '',
+            'next_badge_comment' => $comment,
             'comment_count' => $commentCount,
             'lesson_count' => $lessonCount,
         ];
