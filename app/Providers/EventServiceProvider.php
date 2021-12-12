@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Events\LessonWatched;
 use App\Events\CommentWritten;
 use Illuminate\Support\Facades\Event;
-use App\Listeners\AchievementListener;
 use App\Listeners\LessonWatchedListener;
 use App\Listeners\CommentWrittenListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

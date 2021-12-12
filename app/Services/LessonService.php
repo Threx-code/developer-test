@@ -2,16 +2,44 @@
 
 namespace App\Services;
 
-use App\Models\User;
 use App\Models\Lesson;
-use App\Enums\BadgeEnum;
 use App\Enums\LessonEnum;
-use Illuminate\Validation\Rule;
+use App\Services\BadgeService;
 
 class LessonService
 {
+    public function create_lesson($title)
+    {
+        return $this->post_lesson($title);
+    }
 
-    public function lesson_service($user, $lesson)
+    /**
+     * post_lesson
+     *
+     * @param  mixed $title
+     * @return array
+     */
+    private function post_lesson($title): array
+    {
+        $lesson = Lesson::create([
+            'title' => ucfirst($title)
+        ]);
+
+        return [
+            'id' => $lesson->id,
+            'title' => $lesson->title,
+            'created_at' => $lesson->created_at->format('M-d-Y H:i:s'),
+        ];
+    }
+
+    /**
+     * lesson_service
+     *
+     * @param  mixed $user
+     * @param  mixed $lesson
+     * @return array
+     */
+    public function lesson_service($user, $lesson): array
     {
         $newId = $user->lessons()->whereIn('lesson_id', $lesson)->get()->first();
         if (empty($newId->pivot->lesson_id)) {

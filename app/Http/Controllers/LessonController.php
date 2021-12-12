@@ -8,19 +8,20 @@ use App\Models\{
 };
 use Illuminate\Http\Request;
 use App\Events\LessonWatched;
-use App\Http\Requests\LessonRequest;
-use App\Http\Requests\LessonWatchRequest;
+use App\Http\Requests\{
+    LessonRequest,
+    LessonWatchRequest
+};
+
+use App\Services\LessonService;
 
 class LessonController extends Controller
 {
     public function store(LessonRequest $request)
     {
         if ($request->validated()) {
-            $lesson = Lesson::create([
-                'title' => $request->title
-            ]);
-
-            return response()->json($lesson);
+            $lesson = new LessonService;
+            return $lesson->create_lesson($request->title);
         }
     }
 

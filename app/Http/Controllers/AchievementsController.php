@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Lesson;
-use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Events\UserSuscribed;
-use App\Services\BadgeService;
-use App\Services\LessonService;
-use App\Services\CommentService;
-use Illuminate\Contracts\View\View;
+use App\Services\{
+    BadgeService,
+    LessonService,
+    CommentService
+};
 
 class AchievementsController extends Controller
 {

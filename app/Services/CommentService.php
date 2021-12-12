@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\User;
-use App\Models\Comment;
+use App\Models\{
+    User,
+    Comment
+};
 use App\Enums\CommentEnum;
 use App\Services\BadgeService;
 
