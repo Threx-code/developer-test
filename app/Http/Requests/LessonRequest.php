@@ -27,7 +27,7 @@ class LessonRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['bail', 'required', Rule::unique('lessons', 'title')]
+            'title' => ['bail', 'required', 'string', Rule::unique('lessons', 'title')]
         ];
     }
 

@@ -15,11 +15,12 @@ class CommentService
     {
         $user = User::where("id", $user_id)->get()->first();
         $commentCount = Comment::where('user_id', $user_id)->count();
+        $lessonCount = count(json_decode($user->lessons, true));
 
         return [
             'achievement_name' => $this->comment_count($commentCount)['title'],
             'next_achievement' => $this->comment_count($commentCount)['next'],
-            'badge' => BadgeService::badge_service($commentCount, $commentCount),
+            'badge' => BadgeService::badge_service($lessonCount, $commentCount),
             'user' => [
                 'id' => $user->id,
                 'name' => $user->name,
@@ -38,6 +39,8 @@ class CommentService
      */
     private function comment_count($commentCount): array
     {
+        $next = $num = '';
+
         switch ($commentCount) {
             case (($commentCount >= CommentEnum::num_1) && ($commentCount < CommentEnum::num_3)):
                 $title = CommentEnum::first_comment;

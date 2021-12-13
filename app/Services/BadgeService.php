@@ -23,7 +23,7 @@ class BadgeService
      * @param  mixed $badgeCount
      * @return array
      */
-    final private static function badge_maker($lessonCount, $commentCount): array
+    private static function badge_maker($lessonCount, $commentCount): array
     {
         $badgeCount = $lessonCount + $commentCount;
         switch ($badgeCount) {

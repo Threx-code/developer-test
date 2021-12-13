@@ -21,6 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('comment', [CommentController::class, 'store']);
-Route::post('create/lesson', [LessonController::class, 'store']);
-Route::post('watch/lesson', [LessonController::class, 'user_watch']);
+Route::post('comment', [CommentController::class, 'store'])->name('comment');
+Route::post('create/lesson', [LessonController::class, 'store'])->name('create.lesson');
+Route::post('watch/lesson', [LessonController::class, 'user_watch'])->name('watch.lesson');

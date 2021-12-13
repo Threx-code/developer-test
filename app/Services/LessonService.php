@@ -71,6 +71,7 @@ class LessonService
      */
     private function lesson_counter($lessonCount): array
     {
+        $num = $next = '';
         switch (($lessonCount != '')) {
 
             case (($lessonCount >= LessonEnum::first_watch) && ($lessonCount < LessonEnum::fifth_watch)):
